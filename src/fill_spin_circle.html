@@ -38,7 +38,8 @@
                 transform: rotate(-45deg);
                 position: relative;
 
-                animation: spin var(--spin-duration) linear calc(var(--fill-duration) * var(--target)) infinite;
+                animation: spin var(--spin-duration) linear infinite;
+                animation-delay: calc(var(--fill-duration) * min(var(--target), 0.97));
             }
 
             @keyframes fill {
@@ -69,7 +70,8 @@
             }
 
             .circle__4 {
-                animation-iteration-count: min(var(--target), 1);
+                /* Capped at 0.97 to hide gap between semi-circles */
+                animation-iteration-count: min(var(--target), 0.97);
             }
 
             @keyframes hide {
